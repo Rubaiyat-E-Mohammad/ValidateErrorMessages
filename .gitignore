@@ -1,0 +1,6 @@
+/.DS_Store
+/allure-report
+/json-report.json
+/junit-report.xml
+/node_modules
+/test-allure-report
