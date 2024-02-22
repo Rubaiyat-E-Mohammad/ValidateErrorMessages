@@ -21,6 +21,7 @@ test.describe('Order product and cancellation', async () => {
         await page.getByRole('link', { name: 'Shop', exact: true }).click();
         await page.getByPlaceholder('Search').click()
         await page.getByPlaceholder('Search').fill('Green');
+        await expect.soft(page.getByText('Green Hoodie')).toBeVisible()
         await page.getByText('Green Hoodie').click();
         await page.getByRole('button', { name: 'Add To Cart' }).click();
     })
@@ -37,7 +38,7 @@ test.describe('Order product and cancellation', async () => {
         await page.getByPlaceholder('Last Name').fill('Mohammad');
         await page.locator('.css-17wv8nz').click();
         await page.getByRole('option', { name: 'Bangladesh' }).click();
-        await page.getByPlaceholder('Enter an address').fill('Uttara');
+        await page.getByPlaceholder('Enter an address').fill('uttara');
         await expect.soft(page.getByText('Uttara').first()).toBeVisible()
         await page.getByText('Uttara').first().click();
         await page.getByPlaceholder('Postal Code').fill('1230');
