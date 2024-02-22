@@ -16,7 +16,7 @@ export default defineConfig({
   //timeout: 10 * 1000,
 
   expect:{
-    timeout: 70000,
+    timeout: 7000,
 
     toHaveScreenshot: {
       // An acceptable amount of pixels that could be different, unset by default.
