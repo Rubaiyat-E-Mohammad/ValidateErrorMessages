@@ -1,5 +1,5 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -59,13 +59,13 @@ export default defineConfig({
     browserName: 'chromium',
     headless: false,
 
-    trace: 'on',
+    trace: 'on-first-retry',
     screenshot: 'on',
     video: 'off',
 
     //viewport: { width: 1280, height: 720 },
     launchOptions:{
-      slowMo: 3000
+      slowMo: 30000
     },
     actionTimeout: 0,
     
