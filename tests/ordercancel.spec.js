@@ -64,6 +64,4 @@ test.describe('Order product and cancellation', async () => {
         await page.getByRole('button', { name: 'Cancel' }).click();
         await page.getByRole('button', { name: 'Confirm' }).click();
     })
-
-
 })
