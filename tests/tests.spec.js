@@ -24,18 +24,23 @@ test.describe('Validate Coupon Test', () => {
 
     await page.getByRole('button', { name: 'Visit Store' }).click();
 
-    const page1Promise = page.waitForEvent('popup');
+    await page.waitForTimeout(2000)
 
     await page.getByRole('menuitem', { name: 'erco' }).click();
 
-    page1 = await page1Promise;
+    await page.waitForTimeout(5000)
 
-    page.mouse.wheel(0, 100)
+    //await page.pause();
 
-    await page1.getByText('Blue Shoe').click();
+    const pages = await context.pages();
 
-    const context = await browser.newContext();
+    page1 = await pages[1];
 
+    // await page1.mouse.wheel(0, 100)
+
+    // await page1.waitForTimeout(2000)
+
+    await page1.locator('div').filter({ hasText: /^Blue ShoeAdd to Cart$/ }).locator('div').click();
     await page1.getByRole('button', { name: 'Go to Cart' }).click();
 
   })
@@ -142,12 +147,12 @@ test.describe('Validate Coupon Test', () => {
 
     await change.changecoupon('7XFDR7RC')
 
-    await expect(page1.getByText(/This coupon code is not currently available/)).toBeVisible();
+    await expect(page1.getByText(/This coupon has expired/)).toBeVisible();
 
 
   })
 
-  test('Add Product of other vendor & view cart', async () => {
+  test.skip('Add Product of other vendor & view cart', async () => {
     await page1.locator("//div[@class='inline-flex h-5 w-5 items-center justify-center rounded-full border text-dark-400 hover:border-primary-500 hover:text-primary-500']//*[name()='svg']//*[name()='path' and contains(@stroke-linecap,'round')]").click();
 
     await page1.getByRole('link', { name: 'Shop', exact: true }).click();

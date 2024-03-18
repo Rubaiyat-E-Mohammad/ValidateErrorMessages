@@ -23,7 +23,7 @@ test.describe('Order product and cancellation', async () => {
         await page.waitForTimeout(3000)
         await page.getByPlaceholder('Search').fill('Green');
         await page.waitForTimeout(3000)
-        await page.getByText('Green').first().click();
+        await page.getByText('Green').nth(1).click();
         await page.getByRole('button', { name: 'Add To Cart' }).click();
     })
 
